@@ -1,0 +1,31 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  text-align: center;
+}
+
+.quote-text {
+  font-size: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 1rem;
+}
+
+.quote-author {
+  font-size: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
