@@ -1,5 +1,6 @@
 import "./style.css";
 import quotes from "./quote.json";
+import { animate } from "animejs";
 
 // Get a quote based on the day of the year
 function getDailyQuote() {
@@ -18,7 +19,21 @@ function getDailyQuote() {
 const quoteDisplay = document.getElementById("quote-display");
 const dailyQuote = getDailyQuote();
 
+const pulseAnimation = {
+  scale: [1, 1.1, 1],
+  duration: 400,
+  easing: "easeInOutQuad",
+};
+
 quoteDisplay.innerHTML = `
   <p class="quote-text">"${dailyQuote.quote}"</p>
   <p class="quote-author">- ${dailyQuote.author}</p>
 `;
+
+document.querySelector(".quote-text").addEventListener("click", () => {
+  animate(".quote-text", pulseAnimation);
+});
+
+document.querySelector(".quote-author").addEventListener("click", () => {
+  animate(".quote-author", pulseAnimation);
+});
