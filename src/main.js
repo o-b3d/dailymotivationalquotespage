@@ -30,10 +30,20 @@ quoteDisplay.innerHTML = `
   <p class="quote-author">- ${dailyQuote.author}</p>
 `;
 
-document.querySelector(".quote-text").addEventListener("click", () => {
-  animate(".quote-text", pulseAnimation);
-});
+const copyBtn = document.getElementById("copy-btn");
 
-document.querySelector(".quote-author").addEventListener("click", () => {
-  animate(".quote-author", pulseAnimation);
+copyBtn.addEventListener("click", () => {
+  const text = `"${dailyQuote.quote}" - ${dailyQuote.author}`;
+  navigator.clipboard.writeText(text).then(() => {
+    copyBtn.textContent = "Copied!";
+    setTimeout(() => {
+      copyBtn.textContent = "Copy";
+    }, 2000);
+  });
+
+  animate(copyBtn, {
+    scale: [1, 1.2, 1],
+    duration: 400,
+    easing: "easeInOutQuad",
+  });
 });
