@@ -2,7 +2,7 @@ import "./style.css";
 import quotes from "./quote.json";
 import { animate } from "animejs";
 
-// Get a quote based on the day of the year
+// Get a quote based on the day of year
 function getDailyQuote() {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
@@ -10,26 +10,29 @@ function getDailyQuote() {
   const oneDay = 1000 * 60 * 60 * 24;
   const dayOfYear = Math.floor(diff / oneDay);
 
-  // Use day of year to pick a quote (cycles through all quotes)
+  // Cycle all quotes per day
   const quoteIndex = dayOfYear % quotes.length;
   return quotes[quoteIndex];
 }
 
-// Display the daily quote
+// Daily quote variable
 const quoteDisplay = document.getElementById("quote-display");
 const dailyQuote = getDailyQuote();
 
+// Animation for quote display
 const pulseAnimation = {
   scale: [1, 1.1, 1],
   duration: 400,
   easing: "easeInOutQuad",
 };
 
+// Set quote text and author
 quoteDisplay.innerHTML = `
   <p class="quote-text">"${dailyQuote.quote}"</p>
   <p class="quote-author">- ${dailyQuote.author}</p>
 `;
 
+// Copy button to copy quote and author
 const copyBtn = document.getElementById("copy-btn");
 
 copyBtn.addEventListener("click", () => {
@@ -41,6 +44,7 @@ copyBtn.addEventListener("click", () => {
     }, 2000);
   });
 
+// Animate the copy button on-click
   animate(copyBtn, {
     scale: [1, 1.2, 1],
     duration: 400,
